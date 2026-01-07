@@ -322,8 +322,17 @@ const transporter = nodemailer.createTransport({
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
+  },
+  requireTLS: true,
+  tls: {
+    rejectUnauthorized: false
   }
+
 });
+
+transporter.verify()
+  .then(() => console.log('SMTP listo para enviar correos'))
+  .catch(err => console.error('SMTP NO funcional:', err));
 
 
 //-------------------- Registro de Usuario con Código --------------------//
@@ -370,7 +379,7 @@ app.post('/registro', async (req, res) => {
     });
 
     // Enviar correo con código
-    await transporter.sendMail({
+    const info = await transporter.sendMail({
       from: '"Quizorium" <no-reply@quizorium.com>',
       to: email,
       subject: 'Tu código de verificación',
@@ -447,8 +456,9 @@ app.post('/registro', async (req, res) => {
 </div>
 `
     });
+    console.log('EMAIL RESULTADO:', info);
 
-    await transporter.sendMail({
+    const info = await transporter.sendMail({
       from: '"Quizorium" <no-reply@quizorium.com>',
       to: email,
       subject: 'Bienvenido a Quizorium',
@@ -534,6 +544,7 @@ app.post('/registro', async (req, res) => {
   }
 
 });
+console.log('EMAIL RESULTADO:', info);
 
 //-------------------- Verificación del Código Enviado por Correo --------------------//
 app.post('/verificar-codigo', async (req, res) => {
