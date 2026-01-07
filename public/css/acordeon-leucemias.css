@@ -1,0 +1,149 @@
+/* ========================================
+   ACORDEON-LEUCEMIAS.CSS - ESTILOS DE ACORDEÓN
+   ======================================== */
+
+:root {
+  --accordion-primary: #3498db;
+  --accordion-primary-dark: #2980b9;
+  --accordion-bg: #ffffff;
+  --accordion-text: #2c3e50;
+  --accordion-border: #bdc3c7;
+  --accordion-shadow: rgba(52, 152, 219, 0.08);
+}
+
+body.dark {
+  --accordion-bg: #23272f;
+  --accordion-text: #ecf0f1;
+  --accordion-border: #34495e;
+  --accordion-shadow: rgba(0, 0, 0, 0.4);
+}
+
+/* ===== SECTION ===== */
+.accordion-section {
+  margin-bottom: 3rem;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===== ITEM ===== */
+.accordion-item {
+  margin-bottom: 1.5rem;
+}
+
+/* ===== TOGGLE BUTTON ===== */
+.accordion-toggle {
+  width: 100%;
+  padding: 1.5rem 2rem;
+  border: none;
+  outline: none;
+  background: var(--accordion-bg);
+  color: var(--accordion-primary-dark);
+  font-weight: 800;
+  font-size: 1.4rem;
+  border-radius: 18px;
+  border: 2px solid var(--accordion-border);
+  box-shadow: 0 4px 16px var(--accordion-shadow);
+  margin: 0 auto 1rem auto;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  letter-spacing: 0.3px;
+}
+
+.accordion-toggle::after {
+  content: '▼';
+  font-size: 1.2rem;
+  margin-left: 1rem;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.accordion-toggle:hover,
+.accordion-toggle:focus {
+  background: var(--accordion-primary);
+  color: white;
+  border-color: var(--accordion-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(52, 152, 219, 0.2);
+}
+
+.accordion-toggle.active {
+  background: linear-gradient(135deg, var(--accordion-primary), var(--accordion-primary-dark));
+  color: white;
+  border-color: var(--accordion-primary);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+}
+
+.accordion-toggle.active::after {
+  transform: rotate(180deg);
+}
+
+/* ===== CONTENT ===== */
+.accordion-content {
+  display: none;
+  animation: slideDown 0.4s ease;
+  overflow: hidden;
+}
+
+.accordion-content.show {
+  display: block;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    max-height: 5000px;
+    transform: translateY(0);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .accordion-toggle {
+    padding: 1.2rem 1.5rem;
+    font-size: 1.1rem;
+    border-radius: 14px;
+  }
+
+  .accordion-toggle::after {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .accordion-toggle {
+    padding: 1rem 1.2rem;
+    font-size: 1rem;
+  }
+}
+
+/* ===== DARK MODE ===== */
+body.dark .accordion-toggle {
+  background: var(--accordion-bg);
+  color: var(--accordion-text);
+  border-color: var(--accordion-border);
+  box-shadow: 0 4px 16px var(--accordion-shadow);
+}
+
+body.dark .accordion-toggle:hover,
+body.dark .accordion-toggle:focus {
+  background: var(--accordion-primary);
+  color: white;
+  border-color: var(--accordion-primary);
+}
+
+body.dark .accordion-toggle.active {
+  background: linear-gradient(135deg, var(--accordion-primary), var(--accordion-primary-dark));
+  color: white;
+  border-color: var(--accordion-primary);
+}

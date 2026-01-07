@@ -1,0 +1,680 @@
+/* =============================================
+   HERO-NEW.CSS
+   Visual refinements - Scale & Animations
+   Archivo: ../css/hero-new.css
+   ============================================= */
+
+/* Base body spacing */
+body {
+  padding-top: 80px;
+}
+
+/* =============================================
+   HERO SECTION - Background
+   ============================================= */
+.hero.background-new {
+  background: linear-gradient(180deg, #4da4f5 0%, #a8d4f7 50%, #d0e8fc 100%);
+  min-height: 75vh;
+  position: relative;
+  overflow: hidden;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+}
+
+.hero.background-new::before {
+  background: none;
+}
+
+/* =============================================
+   PERSONA PRINCIPAL - Escala GRANDE
+   ============================================= */
+.hero.background-new .hero-image {
+  flex: 1.2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  z-index: 5;
+}
+
+.hero.background-new .hero-image img {
+  max-width: clamp(350px, 50vw, 700px);
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.18));
+  animation: personaFadeIn 1s ease-out forwards;
+  transition: transform 0.4s ease;
+}
+
+.hero.background-new .hero-image img:hover {
+  transform: scale(1.02) translateY(-3px);
+}
+
+/* =============================================
+   HERO TITLE - Tipografía responsive
+   ============================================= */
+.hero-title {
+  font-size: clamp(1.8rem, 4.5vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-primary, #003DA5);
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+  animation: fadeSlideIn 0.8s ease-out forwards;
+}
+
+/* Hero buttons */
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: fadeSlideIn 0.8s 0.2s ease-out both;
+}
+
+.start-btn-alt {
+  background-color: var(--color-secondary, #f6ca48);
+}
+
+/* =============================================
+   ICONOS FLOTANTES - GRANDES y bien posicionados
+   ============================================= */
+.hero-icons {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.icon-floating {
+  position: absolute;
+  width: clamp(60px, 7vw, 90px);
+  height: auto;
+  pointer-events: auto;
+  opacity: 0;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.2));
+  transition: 
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    filter 0.35s ease,
+    opacity 0.35s ease;
+  will-change: transform, opacity;
+}
+
+/* Animación de entrada + idle */
+.icon-floating {
+  animation: 
+    iconFadeIn 0.7s ease-out forwards,
+    floatIdle 5s ease-in-out infinite;
+}
+
+/* Hover suave */
+.icon-floating:hover {
+  transform: scale(1.15) translateY(-8px);
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.25));
+  animation-play-state: paused;
+}
+
+/* Estado de salida (para JS) */
+.icon-floating.exiting {
+  opacity: 0;
+  transform: translateY(-15px) scale(0.9);
+  transition: 
+    opacity 0.4s ease-out,
+    transform 0.4s ease-out;
+}
+
+/* =============================================
+   POSICIONES DE ICONOS - Distribuidos alrededor
+   ============================================= */
+/* Esquina superior izquierda */
+.icon-clipboard {
+  top: 8%;
+  left: 5%;
+  animation-delay: 0s, 0.7s;
+}
+
+/* Superior centro-izquierda (sobre la persona) */
+.icon-cerebro {
+  top: 15%;
+  left: 25%;
+  animation-delay: 0.1s, 0.8s;
+}
+
+/* Superior centro-derecha */
+.icon-video {
+  top: 8%;
+  right: 38%;
+  animation-delay: 0.15s, 0.85s;
+}
+
+/* Superior derecha */
+.icon-busqueda {
+  top: 12%;
+  right: 22%;
+  animation-delay: 0.2s, 0.9s;
+}
+
+/* Inferior izquierda */
+.icon-microscopio {
+  bottom: 20%;
+  left: 3%;
+  animation-delay: 0.25s, 0.95s;
+}
+
+/* Centro (entre persona y texto) */
+.icon-libros {
+  top: 55%;
+  left: 45%;
+  animation-delay: 0.3s, 1s;
+}
+
+/* Variaciones de animación idle */
+.icon-clipboard { animation-name: iconFadeIn, floatIdle1; }
+.icon-cerebro { animation-name: iconFadeIn, floatIdle2; }
+.icon-video { animation-name: iconFadeIn, floatIdle3; }
+.icon-busqueda { animation-name: iconFadeIn, floatIdle1; }
+.icon-microscopio { animation-name: iconFadeIn, floatIdle2; }
+.icon-libros { animation-name: iconFadeIn, floatIdle3; }
+
+/* =============================================
+   BUBBLES BACKGROUND
+   ============================================= */
+.hero-bubbles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bubble-bg {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  pointer-events: none;
+  animation: bubbleFloat 7s ease-in-out infinite;
+}
+
+.bubble-1 {
+  width: clamp(80px, 10vw, 130px);
+  height: clamp(80px, 10vw, 130px);
+  bottom: 18%;
+  left: 4%;
+  animation-delay: 0s;
+}
+
+.bubble-2 {
+  width: clamp(50px, 7vw, 90px);
+  height: clamp(50px, 7vw, 90px);
+  bottom: 8%;
+  left: 14%;
+  animation-delay: 1.2s;
+}
+
+.bubble-3 {
+  width: clamp(40px, 5vw, 70px);
+  height: clamp(40px, 5vw, 70px);
+  bottom: 28%;
+  right: 8%;
+  animation-delay: 2.4s;
+}
+
+.bubble-4 {
+  width: clamp(130px, 16vw, 220px);
+  height: clamp(130px, 16vw, 220px);
+  bottom: -60px;
+  left: 28%;
+  animation-delay: 0.6s;
+}
+
+.bubble-5 {
+  width: clamp(100px, 13vw, 170px);
+  height: clamp(100px, 13vw, 170px);
+  bottom: 4%;
+  right: 22%;
+  animation-delay: 1.8s;
+}
+
+/* Section lower bubbles */
+.bubble-6 {
+  width: clamp(160px, 20vw, 280px);
+  height: clamp(160px, 20vw, 280px);
+  bottom: 8%;
+  left: 4%;
+  animation-delay: 0s;
+}
+
+.bubble-7 {
+  width: clamp(110px, 14vw, 200px);
+  height: clamp(110px, 14vw, 200px);
+  bottom: 28%;
+  left: 22%;
+  animation-delay: 1.8s;
+}
+
+.bubble-8 {
+  width: clamp(85px, 11vw, 160px);
+  height: clamp(85px, 11vw, 160px);
+  bottom: 48%;
+  right: 12%;
+  animation-delay: 3s;
+}
+
+.bubble-9 {
+  width: clamp(65px, 9vw, 120px);
+  height: clamp(65px, 9vw, 120px);
+  bottom: 18%;
+  right: 28%;
+  animation-delay: 3.6s;
+}
+
+/* =============================================
+   FEATURES SECTION
+   ============================================= */
+.section-features {
+  background: linear-gradient(180deg, #d0e8fc 0%, #e8f4fd 100%);
+  position: relative;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.features-container {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 24px;
+  padding: clamp(24px, 5vw, 40px);
+  margin-top: -80px;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+  animation: fadeSlideUp 0.8s 0.3s ease-out both;
+}
+
+.features-title {
+  text-align: left;
+  color: #333;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  text-transform: none;
+  margin-bottom: 1.5rem;
+}
+
+/* Feature cards */
+.card-feature {
+  background: #fff;
+  border-radius: 16px;
+  padding: clamp(18px, 3vw, 26px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: 
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s ease;
+  animation: cardFadeIn 0.6s ease-out both;
+}
+
+.card-feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.11);
+}
+
+.col-md-6:nth-child(1) .card-feature { animation-delay: 0.4s; }
+.col-md-6:nth-child(2) .card-feature { animation-delay: 0.5s; }
+.col-md-6:nth-child(3) .card-feature { animation-delay: 0.6s; }
+.col-md-6:nth-child(4) .card-feature { animation-delay: 0.7s; }
+
+.card-feature h5 {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.card-feature p {
+  font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+  color: #666;
+  flex: 1;
+  line-height: 1.55;
+}
+
+.card-icon {
+  width: clamp(36px, 5vw, 44px);
+  height: clamp(36px, 5vw, 44px);
+  margin-bottom: 12px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-feature:hover .card-icon {
+  transform: scale(1.08) rotate(4deg);
+}
+
+/* =============================================
+   SECTION LOWER
+   ============================================= */
+.section-lower {
+  background: linear-gradient(180deg, #e8f4fd 0%, #6bb8f5 50%, #4da4f5 100%);
+  min-height: 50vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-lower .bubble-bg {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* =============================================
+   KEYFRAME ANIMATIONS
+   ============================================= */
+
+/* Persona principal entrada */
+@keyframes personaFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* Fade slide in */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade slide up */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Icon fade in */
+@keyframes iconFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.6) translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Float idle - variaciones suaves */
+@keyframes floatIdle1 {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg); 
+  }
+  50% { 
+    transform: translateY(-8px) rotate(2deg); 
+  }
+}
+
+@keyframes floatIdle2 {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg); 
+  }
+  33% { 
+    transform: translateY(-6px) rotate(-1.5deg); 
+  }
+  66% { 
+    transform: translateY(-10px) rotate(1.5deg); 
+  }
+}
+
+@keyframes floatIdle3 {
+  0%, 100% { 
+    transform: translateY(0) scale(1); 
+  }
+  50% { 
+    transform: translateY(-9px) scale(1.015); 
+  }
+}
+
+/* Bubble float */
+@keyframes bubbleFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translateY(-15px) scale(1.04);
+    opacity: 0.22;
+  }
+}
+
+/* Card fade in */
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Exit animation */
+.animate-exit {
+  animation: fadeSlideOut 0.4s ease-out forwards;
+}
+
+@keyframes fadeSlideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+}
+
+/* =============================================
+   REDUCED MOTION - Accesibilidad
+   ============================================= */
+@media (prefers-reduced-motion: reduce) {
+  .icon-floating,
+  .bubble-bg,
+  .card-feature,
+  .hero-title,
+  .hero-buttons,
+  .features-container,
+  .hero.background-new .hero-image img {
+    animation: none;
+    transition: none;
+  }
+  
+  .icon-floating {
+    opacity: 1;
+    transform: none;
+  }
+  
+  .icon-floating:hover,
+  .card-feature:hover,
+  .card-feature:hover .card-icon,
+  .hero.background-new .hero-image img:hover {
+    transform: none;
+  }
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 1200px) {
+  .hero.background-new .hero-image img {
+    max-width: clamp(320px, 48vw, 500px);
+  }
+  
+  .icon-floating {
+    width: clamp(55px, 6vw, 80px);
+  }
+  
+  .icon-clipboard { top: 8%; left: 4%; }
+  .icon-cerebro { top: 14%; left: 22%; }
+  .icon-video { top: 6%; right: 35%; }
+  .icon-busqueda { top: 10%; right: 18%; }
+  .icon-microscopio { bottom: 18%; left: 2%; }
+  .icon-libros { top: 52%; left: 42%; }
+}
+
+@media (max-width: 992px) {
+  .hero.background-new .hero-image img {
+    max-width: clamp(280px, 42vw, 420px);
+  }
+  
+  .icon-floating {
+    width: clamp(48px, 5.5vw, 70px);
+  }
+  
+  .icon-clipboard { top: 6%; left: 3%; }
+  .icon-cerebro { top: 12%; left: 20%; }
+  .icon-video { top: 5%; right: 32%; }
+  .icon-busqueda { top: 8%; right: 15%; }
+  .icon-microscopio { bottom: 16%; left: 2%; }
+  .icon-libros { top: 50%; left: 40%; }
+}
+
+@media (max-width: 768px) {
+  /* Hero container - FORZAR layout vertical */
+  .hero.background-new {
+    min-height: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding-top: 30px !important;
+    padding-bottom: 100px !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    gap: 20px !important;
+  }
+  
+  /* Imagen principal - FORZAR visibilidad */
+  .hero.background-new .hero-image {
+    flex: none !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-bottom: 20px !important;
+    order: 1 !important;
+  }
+  
+  .hero.background-new .hero-image img {
+    max-width: 300px !important;
+    width: 75vw !important;
+    height: auto !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  /* Ocultar iconos flotantes en mobile */
+  .hero-icons {
+    display: none !important;
+  }
+  
+  /* Contenedor de contenido */
+  .hero.background-new .hero-content-wrapper {
+    flex: none !important;
+    width: 100% !important;
+    padding: 0 20px !important;
+    order: 2 !important;
+  }
+  
+  .hero.background-new .hero-content {
+    text-align: center !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+  
+  .hero-title {
+    font-size: clamp(1.6rem, 7vw, 2.2rem) !important;
+    text-align: center !important;
+  }
+  
+  .hero-buttons {
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+  }
+  
+  /* Features container */
+  .features-container {
+    margin-top: -60px;
+    padding: 24px;
+  }
+  
+  .features-title {
+    text-align: center;
+  }
+  
+  .section-lower {
+    min-height: 20vh;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero.background-new {
+    padding-top: 20px !important;
+    padding-bottom: 80px !important;
+  }
+  
+  .hero.background-new .hero-image img {
+    max-width: 260px !important;
+    width: 70vw !important;
+  }
+  
+  .hero-title {
+    font-size: clamp(1.4rem, 6vw, 1.8rem) !important;
+  }
+  
+  .hero-buttons {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+  }
+  
+  .start-btn {
+    width: 100%;
+    max-width: 220px;
+    text-align: center;
+  }
+  
+  .card-feature {
+    padding: 16px;
+  }
+  
+  .features-container {
+    margin-top: -50px;
+    padding: 18px;
+    border-radius: 18px;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero.background-new .hero-image img {
+    max-width: 220px !important;
+    width: 65vw !important;
+  }
+  
+  .hero-title {
+    font-size: 1.3rem !important;
+  }
+}

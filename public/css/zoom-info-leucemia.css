@@ -1,0 +1,124 @@
+/* ========================================
+   ZOOM-INFO-LEUCEMIA.CSS - MODAL DE ZOOM
+   ======================================== */
+
+.modal-img-leucemia {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-img-leucemia[style*="flex"] {
+  display: flex !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-img-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: 1;
+  cursor: pointer;
+}
+
+#modal-img-src {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  background: #fff;
+  z-index: 2;
+  position: relative;
+  display: block;
+  animation: zoomIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+#modal-img-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-size: 2.5rem;
+  background: white;
+  color: #333;
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+
+#modal-img-close:hover {
+  background: #e74c3c;
+  color: white;
+  transform: rotate(90deg) scale(1.1);
+}
+
+#modal-img-close:active {
+  transform: rotate(90deg) scale(0.95);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #modal-img-src {
+    max-width: 95vw;
+    max-height: 85vh;
+  }
+
+  #modal-img-close {
+    top: 16px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+    font-size: 2rem;
+  }
+}
+
+/* Dark mode */
+body.dark #modal-img-close {
+  background: #23272f;
+  color: #ecf0f1;
+}
+
+body.dark #modal-img-close:hover {
+  background: #e74c3c;
+  color: white;
+}

@@ -1,0 +1,206 @@
+/* ───────── cuestionarios-profe.css ───────── */
+
+/* ==== TÍTULO ==== */
+.quiz-title {
+  color: #2980b9 !important;
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  opacity: 1 !important;
+  text-align: center;
+  position: relative;
+  padding-bottom: 0.8rem;
+}
+
+.quiz-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(135deg, #27ae60 40%, #3498db 100%);
+  border-radius: 2px;
+}
+
+/* ==== CONTENEDOR DE TARJETAS ==== */
+#lista-cuestionarios {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 900px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
+
+/* ==== TARJETA ==== */
+.cuest-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+  border: 2px solid #dee2e6;
+  border-left: 5px solid #27ae60;
+  border-radius: 16px;
+  padding: 1.3rem 1.5rem;
+  transition: 
+    transform 0.3s ease, 
+    box-shadow 0.3s ease, 
+    border-color 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.cuest-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(39, 174, 96, 0.08) 0%, transparent 70%);
+  border-radius: 0 16px 0 100%;
+}
+
+.cuest-card:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 10px 30px rgba(39, 174, 96, 0.2);
+  border-left-color: #3498db;
+  border-color: #3498db;
+}
+
+/* flex interno, wrap para móviles */
+.cuest-card > .d-flex {
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ==== TEXTO ==== */
+.cuest-title {
+  font-size: 1.3rem;
+  margin: 0;
+  color: #2980b9;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+.cuest-desc {
+  font-size: 1rem;
+  margin: 0.3rem 0 0 0;
+  color: #6c757d;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+/* ==== BADGE "Nota" ==== */
+.cuest-score {
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #27ae60 0%, #229954 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 15px rgba(39, 174, 96, 0.35);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* ==== BOTÓN "Responder" ==== */
+.cuest-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.4rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+              background 0.2s ease;
+  letter-spacing: 0.3px;
+}
+
+.cuest-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(52, 152, 219, 0.45);
+  background: linear-gradient(135deg, #2980b9 0%, #1a5f8f 100%);
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 768px) {
+  #lista-cuestionarios {
+    padding: 0 0.5rem;
+    gap: 1rem;
+  }
+  .cuest-card {
+    padding: 1rem 1.2rem;
+  }
+  .cuest-card > .d-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+  .quiz-title { 
+    font-size: 1.8rem;
+  }
+  .cuest-title { 
+    font-size: 1.15rem; 
+  }
+  .cuest-desc { 
+    font-size: 0.95rem; 
+  }
+  .cuest-score {
+    font-size: 0.95rem;
+    padding: 0.4rem 0.8rem;
+  }
+  .cuest-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* ==== DARK MODE OVERRIDES ==== */
+html.dark .cuest-card,
+body.dark .cuest-card {
+  background: linear-gradient(135deg, #23272f 0%, #1a1d23 100%) !important;
+  border-color: #333b45;
+  border-left-color: #27ae60;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+html.dark .cuest-card::before {
+  background: radial-gradient(circle, rgba(39, 174, 96, 0.12) 0%, transparent 70%);
+}
+
+html.dark .cuest-card:hover {
+  box-shadow: 0 10px 35px rgba(39, 174, 96, 0.25);
+  border-left-color: #3498db;
+  border-color: #3498db;
+}
+
+html.dark .cuest-title {
+  color: #3498db;
+}
+
+html.dark .cuest-desc {
+  color: #adb5bd;
+}
+
+html.dark .cuest-score {
+  background: linear-gradient(135deg, #27ae60 0%, #229954 100%) !important;
+  box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+}
+
+html.dark .cuest-btn {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.35);
+}
+
+html.dark .cuest-btn:hover {
+  background: linear-gradient(135deg, #2980b9 0%, #1a5f8f 100%);
+  box-shadow: 0 6px 25px rgba(52, 152, 219, 0.5);
+}

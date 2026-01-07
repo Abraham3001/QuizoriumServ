@@ -1,0 +1,183 @@
+:root {
+      --color-bg: #f8f9fa;
+      --color-bg-alt: #ffffff;
+      --color-text: #2c3e50;
+      --color-text-light: #6c757d;
+      --color-primary: #3498db;
+      --color-primary-dark: #2980b9;
+      --color-border: #dee2e6;
+      --color-accent: #27ae60;
+    }
+
+    body {
+      background: var(--color-bg) !important;
+      color: var(--color-text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    .content-wrapper {
+      padding-top: 75px;
+      background-color: var(--color-bg) !important;
+    }
+
+    .panel-header {
+      margin-bottom: 3rem;
+    }
+
+    .panel-header h1 {
+      font-size: 2.5rem;
+      color: var(--color-primary-dark);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .panel-header .accent-bar {
+      width: 12px;
+      height: 40px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, var(--color-accent) 40%, var(--color-primary) 100%);
+    }
+
+    .panel-header p {
+      font-size: 1.15rem;
+      color: var(--color-text-light);
+    }
+
+    .section-title {
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--color-primary-dark);
+      margin-bottom: 1.8rem;
+      letter-spacing: 0.5px;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid var(--color-accent);
+      display: inline-block;
+    }
+
+    .panel-section {
+      margin-bottom: 4rem;
+      background-color: var(--color-bg-alt);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 2px 12px rgba(34, 185, 29, 0.301);
+    }
+
+    .panel-card {
+      background: var(--color-bg-alt);
+      border: 2px solid var(--color-border);
+      border-radius: 18px;
+      box-shadow: 0 3px 20px rgba(52, 152, 219, 0.08);
+      padding: 2rem 1.5rem;
+      transition: all 0.3s ease;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .panel-card:hover {
+      box-shadow: 0 8px 35px rgba(52, 152, 219, 0.18);
+      border-color: var(--color-accent);
+      transform: translateY(-4px);
+    }
+
+    .panel-img-lg {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 14px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+      border: 3px solid var(--color-border);
+      transition: all 0.3s ease;
+    }
+
+    .panel-card:hover .panel-img-lg {
+      border-color: var(--color-accent);
+      transform: scale(1.05);
+    }
+
+    .panel-card h5 {
+      margin-bottom: 10px;
+      color: var(--color-primary-dark);
+      font-weight: 700;
+      font-size: 1.4rem;
+    }
+
+    .panel-card p {
+      font-size: 1rem;
+      color: var(--color-text-light);
+      line-height: 1.6;
+    }
+
+    .btn-primary-custom {
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary-custom:hover {
+      background: linear-gradient(135deg, var(--color-primary-dark) 0%, #1a5f8f 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    }
+
+    .btn-accent {
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--color-accent) 0%, #229954 100%);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-accent:hover {
+      background: linear-gradient(135deg, #229954 0%, #1e8449 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+    }
+
+    footer {
+      background-color: var(--color-bg-alt) !important;
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .panel-header h1 {
+        font-size: 1.8rem;
+      }
+
+      .section-title {
+        font-size: 1.4rem;
+      }
+
+      .panel-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .panel-img-lg {
+        margin-bottom: 1rem;
+      }
+
+      .panel-section {
+        padding: 1.5rem;
+      }
+    }
+
+    /* Tema oscuro */
+    [data-theme="dark"] {
+      --color-bg: #1a1d23;
+      --color-bg-alt: #23272f;
+      --color-text: #e9ecef;
+      --color-text-light: #adb5bd;
+      --color-border: #333b45;
+    }
