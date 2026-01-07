@@ -379,7 +379,7 @@ app.post('/registro', async (req, res) => {
     });
 
     // Enviar correo con código
-    const info = await transporter.sendMail({
+    const info1 = await transporter.sendMail({
       from: `"Quizorium" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: 'Tu código de verificación',
@@ -456,9 +456,9 @@ app.post('/registro', async (req, res) => {
 </div>
 `
     });
-    console.log('EMAIL RESULTADO:', info);
+    console.log('EMAIL RESULTADO:', info1);
 
-    const info = await transporter.sendMail({
+    const info2 = await transporter.sendMail({
       from: `"Quizorium" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: 'Bienvenido a Quizorium',
@@ -544,7 +544,7 @@ app.post('/registro', async (req, res) => {
   }
 
 });
-console.log('EMAIL RESULTADO:', info);
+console.log('EMAIL RESULTADO:', info2);
 
 //-------------------- Verificación del Código Enviado por Correo --------------------//
 app.post('/verificar-codigo', async (req, res) => {
