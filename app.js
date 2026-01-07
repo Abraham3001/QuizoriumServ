@@ -210,7 +210,7 @@ app.post('/reenviar-verificacion', async (req, res) => {
     await usuario.update({ verificationCode: newCode });
 
     await transporter.sendMail({
-      from: '"Quizorium" <no-reply@quizorium.com>',
+      from: `"Quizorium" <${process.env.EMAIL_USER}>`,
       to: usuario.email,
       subject: 'Tu nuevo código de verificación',
       html: `
@@ -380,7 +380,7 @@ app.post('/registro', async (req, res) => {
 
     // Enviar correo con código
     const info = await transporter.sendMail({
-      from: '"Quizorium" <no-reply@quizorium.com>',
+      from: `"Quizorium" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: 'Tu código de verificación',
       html:  `
@@ -459,7 +459,7 @@ app.post('/registro', async (req, res) => {
     console.log('EMAIL RESULTADO:', info);
 
     const info = await transporter.sendMail({
-      from: '"Quizorium" <no-reply@quizorium.com>',
+      from: `"Quizorium" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: 'Bienvenido a Quizorium',
       html: `
