@@ -532,7 +532,7 @@ app.post('/registro', async (req, res) => {
     </div>
   </div>
 `})
-
+console.log('EMAIL RESULTADO:', infoBienvenida);
     return res.json({
       success: true,
       message: 'Te enviamos un código de verificación.',
@@ -544,7 +544,7 @@ app.post('/registro', async (req, res) => {
   }
 
 });
-console.log('EMAIL RESULTADO:', infoBienvenida);
+
 
 //-------------------- Verificación del Código Enviado por Correo --------------------//
 app.post('/verificar-codigo', async (req, res) => {
